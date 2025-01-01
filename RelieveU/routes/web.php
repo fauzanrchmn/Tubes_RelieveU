@@ -1,12 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DoctorAppointmentController;
+use App\Http\Controllers\CounselingHistoryController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\ContentController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::resource('counseling_histories', CounselingHistoryController::class);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
 
 Route::get('/doctors', [DoctorController::class, 'index'])->name('doctors.index');
 Route::get('/doctors/create', [DoctorController::class, 'create'])->name('doctors.create');
@@ -29,3 +32,7 @@ Route::get('/appointments/{appointments}', [DoctorAppointmentController::class, 
 Route::get('/appointments/{appointments}/edit', [DoctorAppointmentController::class, 'edit'])->name('appointments.edit');
 Route::put('/appointments/{appointments}', [DoctorAppointmentController::class, 'update'])->name('appointments.update');
 Route::delete('/appointments/{appointments}', [DoctorAppointmentController::class, 'destroy'])->name('appointments.destroy');
+
+Route::get('/counseling_histories', [CounselingHistoryController::class, 'index'])->name('counseling_histories.index');
+Route::get('/counseling_histories/create', [CounselingHistoryController::class, 'create'])->name('counseling_histories.create');
+Route::post('/counseling_histories', [CounselingHistoryController::class, 'store'])->name('counseling_histories.store');
