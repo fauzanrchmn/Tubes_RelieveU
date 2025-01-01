@@ -15,15 +15,6 @@
         </div>
 
         <div class="form-group">
-            <label for="hospital_id">Hospital:</label>
-            <select name="hospital_id" class="form-control" required>
-                @foreach ($hospitals as $hospital)
-                    <option value="{{ $hospital->id }}">{{ $hospital->name }}</option>
-                @endforeach
-            </select>
-        </div>
-
-        <div class="form-group">
             <label for="appointment_date">Appointment Date:</label>
             <input type="date" name="appointment_date" class="form-control" required>
         </div>
