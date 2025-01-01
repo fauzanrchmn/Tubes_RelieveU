@@ -13,7 +13,11 @@ class CounselingHistoryController extends Controller
      */
     public function index()
     {
-        //
+        // Ambil data riwayat konseling
+        $counselingHistories = CounselingHistory::with(['doctor', 'hospital'])->get();
+
+        // Kirim data ke view
+        return view('counseling_histories.index', compact('counselingHistories'));
     }
 
     /**
@@ -21,46 +25,31 @@ class CounselingHistoryController extends Controller
      */
     public function create()
     {
-        //
+        // Ambil data dokter dan rumah sakit
+        $doctors = Doctor::all();
+        $hospitals = Hospital::all();
+
+        // Tampilkan form untuk menambah riwayat konseling
+        return view('counseling_histories.create', compact('doctors', 'hospitals'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCounselingHistoryRequest $request)
+    public function store(Request $request)
     {
-        //
-    }
+        // Validasi input
+        $request->validate([
+            'doctor_id' => 'required|exists:doctors,id',
+            'hospital_id' => 'required|exists:hospitals,id',
+            'appointment_date' => 'required|date',
+            'status' => 'required|in:completed,pending,cancelled',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(CounselingHistory $counselingHistory)
-    {
-        //
-    }
+        // Menyimpan riwayat konseling baru
+        CounselingHistory::create($request->all());
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(CounselingHistory $counselingHistory)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateCounselingHistoryRequest $request, CounselingHistory $counselingHistory)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(CounselingHistory $counselingHistory)
-    {
-        //
+        // Redirect ke halaman riwayat konseling
+        return redirect()->route('counseling_histories.index')->with('success', 'Counseling history created successfully.');
     }
 }
