@@ -6,8 +6,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('contents', ContentController::class);
-Route::resource('appointments', DoctorAppointmentController::class);
+
 
 Route::get('/doctors', [DoctorController::class, 'index'])->name('doctors.index');
 Route::get('/doctors/create', [DoctorController::class, 'create'])->name('doctors.create');
