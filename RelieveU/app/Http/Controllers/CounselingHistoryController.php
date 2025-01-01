@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\CounselingHistory;
-use App\Http\Requests\StoreCounselingHistoryRequest;
-use App\Http\Requests\UpdateCounselingHistoryRequest;
+use App\Models\Doctor;
+use Illuminate\Http\Request;
 
 class CounselingHistoryController extends Controller
 {
@@ -13,8 +13,8 @@ class CounselingHistoryController extends Controller
      */
     public function index()
     {
-        // Ambil data riwayat konseling
-        $counselingHistories = CounselingHistory::with(['doctor', 'hospital'])->get();
+        // Ambil data riwayat konseling beserta informasi dokter
+        $counselingHistories = CounselingHistory::with('doctor')->get();
 
         // Kirim data ke view
         return view('counseling_histories.index', compact('counselingHistories'));
@@ -25,12 +25,11 @@ class CounselingHistoryController extends Controller
      */
     public function create()
     {
-        // Ambil data dokter dan rumah sakit
+        // Ambil data dokter
         $doctors = Doctor::all();
-        $hospitals = Hospital::all();
 
         // Tampilkan form untuk menambah riwayat konseling
-        return view('counseling_histories.create', compact('doctors', 'hospitals'));
+        return view('counseling_histories.create', compact('doctors'));
     }
 
     /**
@@ -41,7 +40,6 @@ class CounselingHistoryController extends Controller
         // Validasi input
         $request->validate([
             'doctor_id' => 'required|exists:doctors,id',
-            'hospital_id' => 'required|exists:hospitals,id',
             'appointment_date' => 'required|date',
             'status' => 'required|in:completed,pending,cancelled',
         ]);

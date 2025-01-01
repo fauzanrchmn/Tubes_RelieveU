@@ -7,7 +7,6 @@
         <thead>
             <tr>
                 <th>Doctor</th>
-                <th>Hospital</th>
                 <th>Appointment Date</th>
                 <th>Status</th>
             </tr>
@@ -16,7 +15,6 @@
             @foreach ($counselingHistories as $history)
                 <tr>
                     <td>{{ $history->doctor->name }}</td>
-                    <td>{{ $history->hospital->name }}</td>
                     <td>{{ $history->appointment_date }}</td>
                     <td>{{ $history->status }}</td>
                 </tr>

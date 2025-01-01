@@ -11,7 +11,6 @@ class CounselingHistory extends Model
 
     protected $fillable = [
         'doctor_id',
-        'hospital_id',
         'appointment_date',
         'status',
     ];
@@ -20,11 +19,5 @@ class CounselingHistory extends Model
     public function doctor()
     {
         return $this->belongsTo(Doctor::class);
-    }
-
-    // Relasi dengan rumah sakit
-    public function hospital()
-    {
-        return $this->belongsTo(Hospital::class); // Anda perlu membuat model Hospital
     }
 }
