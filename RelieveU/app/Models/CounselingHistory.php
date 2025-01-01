@@ -9,13 +9,7 @@ class CounselingHistory extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'doctor_id',
-        'appointment_date',
-        'status',
-    ];
-
-    // Relasi dengan dokter
+    // Menyatakan relasi dengan model Doctor
     public function doctor()
     {
         return $this->belongsTo(Doctor::class);

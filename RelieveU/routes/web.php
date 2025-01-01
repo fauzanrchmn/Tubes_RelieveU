@@ -11,6 +11,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
 Route::get('/doctors', [DoctorController::class, 'index'])->name('doctors.index');
 Route::get('/doctors/create', [DoctorController::class, 'create'])->name('doctors.create');
 Route::post('/doctors', [DoctorController::class, 'store'])->name('doctors.store');
