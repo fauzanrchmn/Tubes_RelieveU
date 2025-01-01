@@ -6,7 +6,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+Route::resource('counseling_histories', CounselingHistoryController::class);
 
 Route::get('/doctors', [DoctorController::class, 'index'])->name('doctors.index');
 Route::get('/doctors/create', [DoctorController::class, 'create'])->name('doctors.create');
