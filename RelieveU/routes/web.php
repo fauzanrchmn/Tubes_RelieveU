@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\loginController;
 use App\Http\Controllers\DoctorAppointmentController;
 use App\Http\Controllers\CounselingHistoryController;
 use App\Http\Controllers\DashboardController;
@@ -10,6 +11,10 @@ use App\Http\Controllers\ContentController;
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::get('/login', [loginController::class, 'indexlogin'])->name('layouts.login');
+Route::post('/login', [loginController::class, 'login']);
+Route::get('/logout', [loginController::class, 'logout'])->name('logout');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
