@@ -9,7 +9,9 @@
             <label for="doctor_id">Doctor:</label>
             <select name="doctor_id" class="form-control" required>
                 @foreach ($doctors as $doctor)
-                    <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
+                    <option value="{{ $doctor->id }}">{{ old('doctor_id') == $doctor->id ? 'selected' : '' }}
+                        {{ $doctor->name }}
+                    </option>
                 @endforeach
             </select>
         </div>

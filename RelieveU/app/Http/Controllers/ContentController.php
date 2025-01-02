@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Content;
 use App\Http\Requests\StoreContentRequest;
+use Illuminate\Http\Request;
 use App\Http\Requests\UpdateContentRequest;
 
 class ContentController extends Controller

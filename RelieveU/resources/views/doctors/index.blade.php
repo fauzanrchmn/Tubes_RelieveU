@@ -9,6 +9,7 @@
                 <th>Name</th>
                 <th>Specialization</th>
                 <th>Experience (Years)</th>
+                <th>Profile</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -18,6 +19,7 @@
                     <td>{{ $doctor->name }}</td>
                     <td>{{ $doctor->specialization }}</td>
                     <td>{{ $doctor->experience_years }}</td>
+                    <td>{{ $doctor->profile }}</td>
                     <td>
                         <a href="{{ route('doctors.show', $doctor->id) }}" class="btn btn-info">View</a>
                         <a href="{{ route('doctors.edit', $doctor->id) }}" class="btn btn-warning">Edit</a>

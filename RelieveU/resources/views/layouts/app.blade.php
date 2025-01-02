@@ -67,7 +67,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('appointments.index') }}">
                     <i class="fas fa-calendar-plus"></i> Create Appointment
                 </a>
             </li>

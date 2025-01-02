@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Doctor;
 use App\Models\DoctorAppointment;
 use App\Models\CounselingHistory;
+use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {

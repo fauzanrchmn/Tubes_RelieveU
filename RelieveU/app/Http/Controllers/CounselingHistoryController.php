@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\CounselingHistory;
-use App\Models\Doctor;
 use Illuminate\Http\Request;
+use App\Models\Doctor;
 
 class CounselingHistoryController extends Controller
 {
@@ -14,6 +14,7 @@ class CounselingHistoryController extends Controller
     public function index()
     {
         // Ambil data riwayat konseling beserta informasi dokter
+        // $doctors = Doctor::all();
         $counselingHistories = CounselingHistory::with('doctor')->get();
 
         // Kirim data ke view
@@ -43,6 +44,7 @@ class CounselingHistoryController extends Controller
             'appointment_date' => 'required|date',
             'status' => 'required|in:completed,pending,cancelled',
         ]);
+        // dd($request);
 
         // Menyimpan riwayat konseling baru
         CounselingHistory::create($request->all());
