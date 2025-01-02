@@ -35,10 +35,10 @@ Route::delete('/contents/{contents}', [ContentController::class, 'destroy'])->na
 Route::get('/appointments', [DoctorAppointmentController::class, 'index'])->name('appointments.index');
 Route::get('/appointments/create', [DoctorAppointmentController::class, 'create'])->name('appointments.create');
 Route::post('/appointments', [DoctorAppointmentController::class, 'store'])->name('appointments.store');
-Route::get('/appointments/{appointments}', [DoctorAppointmentController::class, 'show'])->name('appointments.show');
-Route::get('/appointments/{appointments}/edit', [DoctorAppointmentController::class, 'edit'])->name('appointments.edit');
-Route::put('/appointments/{appointments}', [DoctorAppointmentController::class, 'update'])->name('appointments.update');
-Route::delete('/appointments/{appointments}', [DoctorAppointmentController::class, 'destroy'])->name('appointments.destroy');
+Route::get('/appointments/{doctorAppointment}', [DoctorAppointmentController::class, 'show'])->name('appointments.show');
+Route::get('/appointments/{doctorAppointment}/edit', [DoctorAppointmentController::class, 'edit'])->name('appointments.edit');
+Route::put('/appointments/{doctorAppointment}', [DoctorAppointmentController::class, 'update'])->name('appointments.update');
+Route::delete('/appointments/{doctorAppointment}', [DoctorAppointmentController::class, 'destroy'])->name('appointments.destroy');
 
 Route::get('/counseling_histories', [CounselingHistoryController::class, 'index'])->name('counseling_histories.index');
 Route::get('/counseling_histories/create', [CounselingHistoryController::class, 'create'])->name('counseling_histories.create');
