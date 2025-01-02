@@ -14,7 +14,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/login', [loginController::class, 'indexlogin'])->name('layouts.login');
 Route::post('/login', [loginController::class, 'login']);
-Route::get('/logout', [loginController::class, 'logout'])->name('logout');
+// Route::get('/logout', [loginController::class, 'logout'])->name('logout');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
