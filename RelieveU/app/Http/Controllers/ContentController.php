@@ -14,7 +14,7 @@ class ContentController extends Controller
      */
     public function index()
     {
-        $contents = Content::all();
+        $contents = Content::where('type', 'Artikel')->get(); // Hanya tipe "Artikel"
         return view('contents.index', compact('contents'));
     }
 
@@ -33,7 +33,6 @@ class ContentController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
-            'type' => 'required|string|in:Poster,Video,Artikel,Tips & Trik',
             'description' => 'nullable|string',
             'file' => 'nullable|file|max:10240', // Max 10MB
         ]);
@@ -45,12 +44,12 @@ class ContentController extends Controller
 
         Content::create([
             'title' => $request->title,
-            'type' => $request->type,
+            'type' => 'Artikel', // Tipe ditentukan sebagai "Artikel"
             'description' => $request->description,
             'file_path' => $filePath,
         ]);
 
-        return redirect()->route('contents.index')->with('success', 'Content added successfully!');
+        return redirect()->route('contents.index')->with('success', 'Artikel added successfully!');
     }
 
     /**
@@ -58,7 +57,55 @@ class ContentController extends Controller
      */
     public function show(Content $content)
     {
+        if ($content->type !== 'Artikel') {
+            abort(404);
+        }
+
         return view('contents.show', compact('content'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Content $content)
+    {
+        if ($content->type !== 'Artikel') {
+            abort(404);
+        }
+
+        return view('contents.edit', compact('content'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Content $content)
+    {
+        if ($content->type !== 'Artikel') {
+            abort(404);
+        }
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'file' => 'nullable|file|max:10240', // Max 10MB
+        ]);
+
+        $filePath = $content->file_path;
+        if ($request->hasFile('file')) {
+            if ($filePath) {
+                \Storage::delete($filePath);
+            }
+            $filePath = $request->file('file')->store('contents');
+        }
+
+        $content->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'file_path' => $filePath,
+        ]);
+
+        return redirect()->route('contents.index')->with('success', 'Artikel updated successfully!');
     }
 
     /**
@@ -66,11 +113,16 @@ class ContentController extends Controller
      */
     public function destroy(Content $content)
     {
+        if ($content->type !== 'Artikel') {
+            abort(404);
+        }
+
         if ($content->file_path) {
-            Storage::delete($content->file_path);
+            \Storage::delete($content->file_path);
         }
 
         $content->delete();
-        return redirect()->route('contents.index')->with('success', 'Content deleted successfully!');
+
+        return redirect()->route('contents.index')->with('success', 'Artikel deleted successfully!');
     }
 }

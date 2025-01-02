@@ -29,8 +29,10 @@ Route::delete('/doctors/{doctor}', [DoctorController::class, 'destroy'])->name('
 Route::get('/contents', [ContentController::class, 'index'])->name('contents.index');
 Route::get('/contents/create', [ContentController::class, 'create'])->name('contents.create');
 Route::post('/contents', [ContentController::class, 'store'])->name('contents.store');
-Route::get('/contents/{contents}', [ContentController::class, 'show'])->name('contents.show');
-Route::delete('/contents/{contents}', [ContentController::class, 'destroy'])->name('contents.destroy');
+Route::get('/contents/{content}/edit', [ContentController::class, 'edit'])->name('contents.edit');
+Route::get('/contents/{content}', [ContentController::class, 'show'])->name('contents.show');
+Route::put('/contents/{content}', [ContentController::class, 'update'])->name('contents.update');
+Route::delete('/contents/{content}', [ContentController::class, 'destroy'])->name('contents.destroy');
 
 Route::get('/appointments', [DoctorAppointmentController::class, 'index'])->name('appointments.index');
 Route::get('/appointments/create', [DoctorAppointmentController::class, 'create'])->name('appointments.create');
@@ -43,3 +45,5 @@ Route::delete('/appointments/{doctorAppointment}', [DoctorAppointmentController:
 Route::get('/counseling_histories', [CounselingHistoryController::class, 'index'])->name('counseling_histories.index');
 Route::get('/counseling_histories/create', [CounselingHistoryController::class, 'create'])->name('counseling_histories.create');
 Route::post('/counseling_histories', [CounselingHistoryController::class, 'store'])->name('counseling_histories.store');
+Route::get('/counseling_histories/{counselingHistory}/edit', [CounselingHistoryController::class, 'edit'])->name('counseling_histories.edit');
+Route::put('/counseling_histories/{counselingHistory}', [CounselingHistoryController::class, 'update'])->name('counseling_histories.update');

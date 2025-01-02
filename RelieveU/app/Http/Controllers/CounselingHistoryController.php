@@ -52,4 +52,39 @@ class CounselingHistoryController extends Controller
         // Redirect ke halaman riwayat konseling
         return redirect()->route('counseling_histories.index')->with('success', 'Counseling history created successfully.');
     }
+            /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit($id)
+    {
+        // Ambil data riwayat konseling berdasarkan ID
+        $counselingHistory = CounselingHistory::findOrFail($id);
+
+        // Ambil data dokter
+        $doctors = Doctor::all();
+
+        // Tampilkan form edit dengan data yang ada
+        return view('counseling_histories.edit', compact('counselingHistory', 'doctors'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, $id)
+    {
+        // Validasi input
+        $request->validate([
+            'doctor_id' => 'required|exists:doctors,id',
+            'appointment_date' => 'required|date',
+            'status' => 'required|in:completed,pending,cancelled',
+        ]);
+
+        // Update data riwayat konseling
+        $counselingHistory = CounselingHistory::findOrFail($id);
+        $counselingHistory->update($request->all());
+
+        // Redirect ke halaman riwayat konseling
+        return redirect()->route('counseling_histories.index')->with('success', 'Counseling history updated successfully.');
+    }
+
 }
