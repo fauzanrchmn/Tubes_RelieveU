@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Add New Doctor</h1>
+    <h1>Add Doctor</h1>
     <form action="{{ route('doctors.store') }}" method="POST">
         @csrf
         <div class="form-group">

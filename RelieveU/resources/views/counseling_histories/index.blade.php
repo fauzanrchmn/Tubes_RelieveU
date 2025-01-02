@@ -10,7 +10,7 @@
         </div>
     @endif
 
-    <a href="{{ route('counseling_histories.create') }}" class="btn btn-primary mb-3">Add New Counseling History</a>
+    <a href="{{ route('counseling_histories.create') }}" class="btn btn-primary mb-3">Add Counseling History</a>
 
     <table class="table">
         <thead>

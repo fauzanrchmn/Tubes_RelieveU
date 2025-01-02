@@ -8,16 +8,16 @@
         @method('PUT')
 
         <div class="mb-3">
-            <label for="title" class="form-label">Judul</label>
+            <label for="title" class="form-label">Title</label>
             <input type="text" name="title" id="title" class="form-control" value="{{ $content->title }}" required>
         </div>
 
         <div class="mb-3">
-            <label for="description" class="form-label">Deskripsi</label>
+            <label for="description" class="form-label">Description</label>
             <textarea name="description" id="description" class="form-control">{{ $content->description }}</textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary">Simpan</button>
-        <a href="{{ route('contents.index') }}" class="btn btn-secondary">Kembali</a>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="{{ route('contents.index') }}" class="btn btn-secondary">Back</a>
     </form>
 @endsection

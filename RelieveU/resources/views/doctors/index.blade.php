@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>Doctors List</h1>
-    <a href="{{ route('doctors.create') }}" class="btn btn-primary">Add New Doctor</a>
+    <a href="{{ route('doctors.create') }}" class="btn btn-primary">Add Doctor</a>
     <table class="table">
         <thead>
             <tr>
