@@ -11,12 +11,12 @@ use App\Http\Controllers\ContentController;
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('/login', [loginController::class, 'indexlogin'])->name('layouts.login');
 Route::post('/login', [loginController::class, 'login']);
 // Route::get('/logout', [loginController::class, 'logout'])->name('logout');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('/doctors', [DoctorController::class, 'index'])->name('doctors.index');
 Route::get('/doctors/create', [DoctorController::class, 'create'])->name('doctors.create');
