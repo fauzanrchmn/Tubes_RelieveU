@@ -113,7 +113,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('contents.index') }}">
-                    <i class="fas fa-file-alt"></i> Content
+                    <i class="fas fa-file-alt"></i> Berita Acara
                 </a>
             </li>
         </ul>
