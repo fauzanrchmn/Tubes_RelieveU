@@ -21,11 +21,6 @@ class loginController extends Controller
 
     protected $redirectTo = '/dashboard';
 
-    // public function __construct()
-    // {
-    //     $this->middleware('guest')->except('logout');
-    // }
-
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
