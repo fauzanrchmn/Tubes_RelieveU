@@ -13,6 +13,5 @@ class Content extends Model
         'title',
         'type',
         'description',
-        'file_path',
     ];
 }

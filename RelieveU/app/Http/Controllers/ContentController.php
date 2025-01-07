@@ -46,7 +46,6 @@ class ContentController extends Controller
             'title' => $request->title,
             'type' => 'Artikel', // Tipe ditentukan sebagai "Artikel"
             'description' => $request->description,
-            'file_path' => $filePath,
         ]);
 
         return redirect()->route('contents.index')->with('success', 'Artikel added successfully!');
@@ -88,7 +87,6 @@ class ContentController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'file' => 'nullable|file|max:10240', // Max 10MB
         ]);
 
         $filePath = $content->file_path;
@@ -102,7 +100,6 @@ class ContentController extends Controller
         $content->update([
             'title' => $request->title,
             'description' => $request->description,
-            'file_path' => $filePath,
         ]);
 
         return redirect()->route('contents.index')->with('success', 'Artikel updated successfully!');
