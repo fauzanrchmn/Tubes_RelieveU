@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Detail Artikel</h1>
+    <h1>Detail Berita Acara</h1>
     <table class="table">
         <tr>
             <th>Judul:</th>

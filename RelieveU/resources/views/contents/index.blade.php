@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Artikel List</h1>
+    <h1>Berita Acara List</h1>
 
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    <a href="{{ route('contents.create') }}" class="btn btn-primary mb-3">Add Artikel</a>
+    <a href="{{ route('contents.create') }}" class="btn btn-primary mb-3">Add Berita Acara</a>
 
     <table class="table">
         <thead>

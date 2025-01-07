@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Edit Artikel</h1>
+    <h1>Edit Berita Acara</h1>
 
     <form action="{{ route('contents.update', $content) }}" method="POST" enctype="multipart/form-data">
         @csrf
