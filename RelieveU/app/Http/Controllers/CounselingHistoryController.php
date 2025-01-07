@@ -8,9 +8,6 @@ use App\Models\Doctor;
 
 class CounselingHistoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         // Ambil data riwayat konseling beserta informasi dokter
@@ -21,9 +18,6 @@ class CounselingHistoryController extends Controller
         return view('counseling_histories.index', compact('counselingHistories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         // Ambil data dokter
