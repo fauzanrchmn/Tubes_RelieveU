@@ -16,8 +16,8 @@ class Login
     public function handle(Request $request, Closure $next): Response
     {
         if (!session()->has('login')) {
-            return redirect('/login');
+            return redirect('/login');// Redirect ke halaman login jika belum login
         }
-        return $next($request);
+        return $next($request); // Lanjutkan ke request berikutnya jika sudah login
     }
 }
