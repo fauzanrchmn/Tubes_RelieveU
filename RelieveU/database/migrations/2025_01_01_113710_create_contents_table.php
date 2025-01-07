@@ -14,9 +14,8 @@ return new class extends Migration
         Schema::create('contents', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('type'); // Poster, Video, Artikel, Tips & Trik
+            $table->string('type');
             $table->text('description')->nullable();
-            $table->string('file_path')->nullable(); // Path untuk file (poster, video)
             $table->timestamps();
         });
     }
